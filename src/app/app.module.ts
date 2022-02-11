@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import {loginComponent} from  './login/login.component';
 import {ProjectComponent} from  './Project/Project.component';
 import {CreateProjectComponent} from  './CreateProject/CreateProject.component';
 import {UpdateProjectComponent} from  './UpdateProject/UpdateProject.component';
-import {ShowProjectComponent} from  './ShowProject/ShowProject.component';
 import {UserComponent} from  './User/User.component';
 import {CreateUserComponent} from  './CreateUser/CreateUser.component';
-import {ShowUserComponent} from  './ShowUser/ShowUser.component';
 import {TaskComponent} from  './Task/Task.component';
 import {CreateTaskComponent} from  './CreateTask/CreateTask.component';
 import {UpdateTaskComponent} from  './UpdateTask/UpdateTask.component';
-import {ShowTaskComponent} from  './ShowTask/ShowTask.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -79,6 +77,10 @@ import { UpdatetaskNavbarComponent } from './UpdateTask/updatetask-navbar/update
 import { UpdatetaskHeaderComponent } from './UpdateTask/updatetask-header/updatetask-header.component';
 import { UpdatetaskFooterComponent } from './UpdateTask/updatetask-footer/updatetask-footer.component';
 import { UpdatetaskMaincontentComponent } from './UpdateTask/updatetask-maincontent/updatetask-maincontent.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
+
 
 
 
@@ -89,14 +91,11 @@ import { UpdatetaskMaincontentComponent } from './UpdateTask/updatetask-maincont
     ProjectComponent,
     CreateProjectComponent,
     UpdateProjectComponent,
-    ShowProjectComponent,
     UserComponent,
     TaskComponent,
     CreateTaskComponent,
     UpdateTaskComponent,
     CreateUserComponent,
-    ShowTaskComponent,
-    ShowUserComponent,
     LoginNavbarComponent,
     LoginHeaderComponent,
     LoginSidebarComponent,
@@ -148,9 +147,12 @@ import { UpdatetaskMaincontentComponent } from './UpdateTask/updatetask-maincont
     UpdatetaskHeaderComponent,
     UpdatetaskFooterComponent,
     UpdatetaskMaincontentComponent,
+   
   ],
   imports: [
     BrowserModule,
+    FormsModule,                              
+    ReactiveFormsModule,
     AppRoutingModule,
     AgGridModule,
     BrowserAnimationsModule,
@@ -165,9 +167,11 @@ import { UpdatetaskMaincontentComponent } from './UpdateTask/updatetask-maincont
     MatTableModule,
     MatSidenavModule,
     MatPaginatorModule,
-    MatGridListModule
+    MatGridListModule,
+    HttpClientModule,
+    ToastrModule.forRoot() ,
   ],
-  providers: [],
+  providers: [ DatePipe,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
